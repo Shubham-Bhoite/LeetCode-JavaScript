@@ -8,3 +8,19 @@ When all the promises returned from functions were resolved successfully in para
 promise rejects:
 When any of the promises returned from functions were rejected. promise should also reject with the reason of the first rejection.
 */
+
+
+var promiseAll = function(functions) {
+    return new Promise((resolve, reject) => {
+        let results = [];
+        let count = 0;
+        functions.forEach((fn, i) =>
+            fn()
+                .then(res => {
+                    results[i] = res;
+                    if (++count === functions.length) resolve(results);
+                })
+                .catch(reject)
+        );
+    });
+};
