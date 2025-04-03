@@ -11,3 +11,9 @@ If two objects share an id, their properties should be merged into a single obje
 If a key only exists in one object, that single key-value pair should be included in the object.
 If a key is included in both objects, the value in the object from arr2 should override the value from arr1.
 */
+
+var join = function(arr1, arr2) {
+    let map = new Map();
+    [...arr1, ...arr2].forEach(obj => map.set(obj.id, { ...map.get(obj.id), ...obj }));
+    return [...map.values()].sort((a, b) => a.id - b.id);
+};
