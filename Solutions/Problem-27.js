@@ -6,3 +6,18 @@ A compact object is the same as the original object, except with keys containing
 
 You may assume the obj is the output of JSON.parse. In other words, it is valid JSON.
 */
+
+var compactObject = function(obj) {
+    if (Array.isArray(obj)) {
+        return obj
+            .map(compactObject)
+            .filter(Boolean);
+    } else if (obj && typeof obj === 'object') {
+        return Object.fromEntries(
+            Object.entries(obj)
+                .map(([k, v]) => [k, compactObject(v)])
+                .filter(([_, v]) => Boolean(v))
+        );
+    }
+    return obj;
+};
