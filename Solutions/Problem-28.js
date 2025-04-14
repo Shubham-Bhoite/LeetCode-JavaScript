@@ -11,3 +11,25 @@ The subscribe method should also return an object with an unsubscribe method tha
 2.emit - This method takes in two arguments: the name of an event as a string and an optional array of arguments that will be passed to the callback(s). If there are no callbacks subscribed to the given event, return an empty array. Otherwise, return an array of the results of all callback calls in the order they were subscribed.
 
 */
+
+class EventEmitter {
+    constructor() {
+        this.events = {};
+    }
+
+    subscribe(eventName, callback) {
+        if (!this.events[eventName]) this.events[eventName] = [];
+        this.events[eventName].push(callback);
+
+        return {
+            unsubscribe: () => {
+                const i = this.events[eventName].indexOf(callback);
+                if (i !== -1) this.events[eventName].splice(i, 1);
+            }
+        };
+    }
+
+    emit(eventName, args = []) {
+        return this.events[eventName]?.map(fn => fn(...args)) || [];
+    }
+}
