@@ -1,7 +1,6 @@
 /* 28. Event Emitter :
 
 Design an EventEmitter class. This interface is similar (but with some differences) to the one found in Node.js or the Event Target interface of the DOM. The EventEmitter should allow for subscribing to events and emitting them.
-
 Your EventEmitter class should have the following two methods:
 
 1.subscribe - This method takes in two arguments: the name of an event as a string and a callback function. This callback function will later be called when the event is emitted.
