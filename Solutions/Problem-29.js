@@ -7,11 +7,8 @@ A multi-dimensional array is a recursive data structure that contains integers o
 A flattened array is a version of that array with some or all of the sub-arrays removed and replaced with the actual elements in that sub-array. This flattening operation should only be done if the current depth of nesting is less than n. The depth of the elements in the first array are considered to be 0.
 */
 
-/**
- * @param {Array} arr
- * @param {number} depth
- * @return {Array}
- */
+
+
 var flat = function (arr, n) {
     function helper(array, depth) {
         let result = [];
