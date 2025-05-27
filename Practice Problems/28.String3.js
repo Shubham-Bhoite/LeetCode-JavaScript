@@ -11,4 +11,4 @@ function uniqueCharacters(str) {
     return uniqueChars.join('');
 }
 
-console.log(uniqueCharacters("geeksforgeeks")); 
+console.log(uniqueCharacters("kartikibhoite")); 
